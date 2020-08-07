@@ -32,4 +32,8 @@
   .Pagination button + button {
     margin-left: 0;
   }
+
+  .Pagination button {
+    max-width: 100%;
+  }
 }

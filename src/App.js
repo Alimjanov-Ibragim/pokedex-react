@@ -11,8 +11,14 @@ import "./App.css";
 
 const App = () => {
   const [pokemons, setPokemons] = useState([]);
+  const [limit, setLimit] = useState(10);
+  const items = useState([
+    { id: 1, value: 10 },
+    { id: 2, value: 20 },
+    { id: 3, value: 50 }
+  ])[0];
   const [page, setPage] = useState(
-    "https://pokeapi.co/api/v2/pokemon?limit=20&offset=200"
+    `https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=200`
   );
   const [prev, setPrev] = useState();
   const [next, setNext] = useState();
@@ -20,16 +26,27 @@ const App = () => {
   const [search, setSearch] = useState("");
   const [sort, setSort] = useState("asc");
   const [sortClicked, setSortClicked] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     setLoading(true);
-    axios.get(page).then(response => {
-      setLoading(false);
-      setPokemons(response.data.results.map(pok => pok.name));
-      setPrev(response.data.previous);
-      setNext(response.data.next);
-    });
-  }, [page]);
+    setMounted(true);
+
+    async function getCharacters() {
+      const response = await axios.get(page);
+      if (mounted && page) {
+        setLoading(false);
+        setPokemons(response.data.results.map(pok => pok.name));
+        setPrev(response.data.previous);
+        setNext(response.data.next);
+        setPage(`https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=200`);
+      }
+    }
+    getCharacters();
+    return () => {
+      setMounted(false);
+    };
+  }, [page, limit, mounted]);
 
   const goNextPage = () => {
     setPage(next);
@@ -100,6 +117,18 @@ const App = () => {
                 />
               ) : null}
             </button>
+            <select
+              name="limit"
+              onChange={e => setLimit(e.currentTarget.value)}
+              value={limit}
+              disabled={loading}
+            >
+              {items.map(item => (
+                <option key={item.id} value={item.value}>
+                  {item.value}
+                </option>
+              ))}
+            </select>
           </div>
           <Pokemons pokemons={pokemons} />
           <Pagination goNextPage={goNextPage} goPrevPage={goPrevPage} />

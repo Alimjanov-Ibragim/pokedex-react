@@ -22,7 +22,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 20px;
+  max-width: 260px;
+  margin: 0 auto 20px;
 }
 
 .App__search input {
@@ -47,16 +48,18 @@
 .App__sort {
   display: flex;
   justify-content: center;
+  max-width: 260px;
+  width: 100%;
+  margin: 0 auto 20px;
 }
 
 .App__sort button {
   display: flex;
   align-items: center;
   justify-content: center;
-  max-width: 140px;
   width: 100%;
+  flex: 1;
   min-height: 50px;
-  margin-bottom: 20px;
   padding: 10px;
   font-size: 16px;
   font-weight: bold;
@@ -71,6 +74,13 @@
 .App__sort button:hover {
   background-color: #218838;
   border-color: #1e7e34;
+}
+
+.App__sort select {
+  flex: 0 0 40px;
+  height: 50px;
+  max-width: 40px;
+  margin-left: 10px;
 }
 
 .orderByIcon {
@@ -93,3 +103,7 @@
     padding: 0 20px;
   }
 }
+
+/* @media (max-width: 500px) {
+
+} */

@@ -24,6 +24,7 @@
 .Pokemon__img {
   width: 100px;
   height: 100px;
+  margin-bottom: 10px;
   display: block;
 }
 
@@ -123,6 +124,10 @@ button.close {
     flex: 0 0 33.33%;
     max-width: 33.33%;
   }
+
+  .modalWr-content {
+    padding: 20px !important;
+  }
 }
 
 @media (max-width: 767px) {
@@ -130,11 +135,27 @@ button.close {
     flex: 0 0 50%;
     max-width: 50%;
   }
+
+  .modalWr-content {
+    width: 90% !important;
+  }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 600px) {
   .Pokemon__col {
     flex: 0 0 100%;
     max-width: 100%;
+  }
+
+  /* .Pokemon__typesWrModal {
+    flex-direction: column;
+  } */
+
+  .Pokemon__typesWrModal {
+    margin-bottom: 0;
+  }
+
+  .Pokemon__imgModal {
+    margin-bottom: 20px;
   }
 }
