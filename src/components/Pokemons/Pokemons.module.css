@@ -1,0 +1,5 @@
+.Pokemon__items {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -20px;
+}
