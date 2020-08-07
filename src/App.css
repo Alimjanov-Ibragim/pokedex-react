@@ -87,3 +87,9 @@
 *:focus {
   outline: none !important;
 }
+
+@media (max-width: 1200px) {
+  .App__inner {
+    padding: 0 20px;
+  }
+}

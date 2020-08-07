@@ -117,3 +117,24 @@ button.close {
   background-color: #0069d9;
   border-color: #0062cc;
 }
+
+@media (max-width: 991px) {
+  .Pokemon__col {
+    flex: 0 0 33.33%;
+    max-width: 33.33%;
+  }
+}
+
+@media (max-width: 767px) {
+  .Pokemon__col {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+}
+
+@media (max-width: 500px) {
+  .Pokemon__col {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
